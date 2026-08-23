@@ -1,6 +1,6 @@
 import { db } from '@/lib/db';
 
-export const revalidate = 0;
+export const revalidate = 10;
 
 export default async function TechnicalStaff() {
   const staff = await db.all('SELECT * FROM technical_staff WHERE status = "active" ORDER BY display_order ASC, name ASC');

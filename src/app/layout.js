@@ -3,6 +3,8 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import './globals.css';
 
+export const revalidate = 10; // Cache layout settings for 10s
+
 export async function generateMetadata() {
   try {
     const rows = await db.all('SELECT * FROM site_settings');

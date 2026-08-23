@@ -3,7 +3,7 @@ import { db } from '@/lib/db';
 import HeroSlider from '@/components/HeroSlider';
 import { Calendar, Bell, Newspaper, MapPin, Trophy, ShieldRight } from 'lucide-react';
 
-export const revalidate = 0; // Disable caching to fetch real-time updates from SQLite
+export const revalidate = 10; // Cache home page for 10s
 
 export default async function Home() {
   // 1. Fetch slider data (latest news)

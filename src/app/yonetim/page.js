@@ -1,6 +1,6 @@
 import { db } from '@/lib/db';
 
-export const revalidate = 0;
+export const revalidate = 10;
 
 export default async function Management() {
   const managers = await db.all('SELECT * FROM management ORDER BY display_order ASC, name ASC');

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { db } from '@/lib/db';
 
-export const revalidate = 0;
+export const revalidate = 10;
 
 export default async function NewsList() {
   const news = await db.all('SELECT * FROM news WHERE status = "published" ORDER BY published_at DESC');

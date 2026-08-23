@@ -1,6 +1,6 @@
 import { db } from '@/lib/db';
 
-export const revalidate = 0;
+export const revalidate = 10;
 
 export default async function Announcements() {
   const announcements = await db.all('SELECT * FROM announcements WHERE status = "published" ORDER BY published_at DESC');
