@@ -204,7 +204,7 @@ export default function Contact() {
           <h2 className="section-title">Stadyum / Konum</h2>
           <div className="map-wrapper glass-panel">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3005.816654763137!2d28.98906917658826!3d41.10300991341071!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab6f6eb8b9759%3A0xe2128c617eb0d3b4!2sRams%20Park%20(Ali%20Sami%20Yen%20Spor%20Kompleksi)!5e0!3m2!1str!2str!4v1780000000000!5m2!1str!2str"
+              src="https://maps.google.com/maps?q=89XG%2BQWM+Battalgazi%2C+Malatya&output=embed&hl=tr&z=17"
               width="100%"
               height="450"
               style={{ border: 0, borderRadius: '8px' }}
