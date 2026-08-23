@@ -121,7 +121,7 @@ db.serialize(async () => {
   // Default Site Settings
   const settings = [
     ['club_name', 'Galata Spor Kulübü'],
-    ['logo_url', '/uploads/gs_logo.png'],
+    ['logo_url', '/uploads/logo.png'],
     ['phone', '+90 212 305 1905'],
     ['email', 'info@galatasporkulubu.org.tr'],
     ['whatsapp', '905051905190'],

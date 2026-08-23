@@ -146,7 +146,7 @@ class Database {
     // Seed Settings
     const settings = [
       ['club_name', 'Galata Spor Kulübü'],
-      ['logo_url', '/uploads/whatsapp-image-2026-08-20-at-17-39-45-1787481900147.jpeg'],
+      ['logo_url', '/uploads/logo.png'],
       ['phone', '+90 212 305 1905'],
       ['email', 'info@galatasporkulubu.org.tr'],
       ['whatsapp', '905051905190'],
