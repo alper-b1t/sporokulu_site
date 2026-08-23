@@ -124,7 +124,7 @@ db.serialize(async () => {
     ['logo_url', '/uploads/logo.png'],
     ['phone', '+90 212 305 1905'],
     ['email', 'info@galatasporkulubu.org.tr'],
-    ['whatsapp', '905051905190'],
+    ['whatsapp', '905308166431'],
     ['address', 'Battalgazi, Malatya'],
     ['instagram', 'https://instagram.com/galatasaray'],
     ['facebook', 'https://facebook.com/galatasaray'],

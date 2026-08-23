@@ -51,7 +51,7 @@ export default function Contact() {
 
   const waUrl = settings?.whatsapp
     ? `https://wa.me/${settings.whatsapp.replace(/\D/g, '')}`
-    : 'https://wa.me/90530816431';
+    : 'https://wa.me/905308166431';
 
   const secondaryColor = settings?.secondary_color || '#FDB912';
 
