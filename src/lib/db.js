@@ -7,12 +7,18 @@ const DB_PATH = path.resolve(process.cwd(), 'club.db');
 
 class Database {
   constructor() {
-    this.db = new sqlite3.Database(DB_PATH, (err) => {
+    const mode = process.env.VERCEL
+      ? sqlite3.OPEN_READONLY
+      : (sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE);
+
+    this.db = new sqlite3.Database(DB_PATH, mode, (err) => {
       if (err) {
         console.error('Could not connect to database', err);
       } else {
-        console.log('Connected to SQLite database at:', DB_PATH);
-        this.autoInitialize();
+        console.log('Connected to SQLite database at:', DB_PATH, process.env.VERCEL ? '(READ-ONLY)' : '');
+        if (!process.env.VERCEL) {
+          this.autoInitialize();
+        }
       }
     });
   }
