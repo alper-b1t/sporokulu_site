@@ -126,7 +126,7 @@ db.serialize(async () => {
     ['email', 'info@galatasporkulubu.org.tr'],
     ['whatsapp', '905308166431'],
     ['address', 'Battalgazi, Malatya'],
-    ['instagram', 'https://instagram.com/galatasaray'],
+    ['instagram', 'https://www.instagram.com/malatyagalataspor'],
     ['facebook', 'https://facebook.com/galatasaray'],
     ['twitter', 'https://twitter.com/galatasaray'],
     ['youtube', 'https://youtube.com/galatasaray'],
