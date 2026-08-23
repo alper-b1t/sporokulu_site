@@ -11,9 +11,12 @@ class Database {
       ? sqlite3.OPEN_READONLY
       : (sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE);
 
+    this.connectionError = null;
+
     this.db = new sqlite3.Database(DB_PATH, mode, (err) => {
       if (err) {
         console.error('Could not connect to database', err);
+        this.connectionError = err;
       } else {
         console.log('Connected to SQLite database at:', DB_PATH, process.env.VERCEL ? '(READ-ONLY)' : '');
         if (!process.env.VERCEL) {
@@ -286,6 +289,9 @@ class Database {
   // Promise wrapper for db.all (fetch multiple rows)
   all(sql, params = []) {
     return new Promise((resolve, reject) => {
+      if (this.connectionError) {
+        return reject(new Error('Database connection failed: ' + this.connectionError.message));
+      }
       this.db.all(sql, params, (err, rows) => {
         if (err) reject(err);
         else resolve(rows);
@@ -296,6 +302,9 @@ class Database {
   // Promise wrapper for db.get (fetch single row)
   get(sql, params = []) {
     return new Promise((resolve, reject) => {
+      if (this.connectionError) {
+        return reject(new Error('Database connection failed: ' + this.connectionError.message));
+      }
       this.db.get(sql, params, (err, row) => {
         if (err) reject(err);
         else resolve(row);
@@ -306,6 +315,9 @@ class Database {
   // Promise wrapper for db.run (insert, update, delete)
   run(sql, params = []) {
     return new Promise((resolve, reject) => {
+      if (this.connectionError) {
+        return reject(new Error('Database connection failed: ' + this.connectionError.message));
+      }
       this.db.run(sql, params, function (err) {
         if (err) reject(err);
         else resolve({ id: this.lastID, changes: this.changes });
