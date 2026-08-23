@@ -64,10 +64,6 @@ Sunucu başladıktan sonra tarayıcınızda [http://localhost:3000](http://local
 
 ## Yönetim Paneli Giriş Bilgileri
 
-Yönetim paneline erişmek için tarayıcınızda [http://localhost:3000/admin](http://localhost:3000/admin) adresine gidin.
-
-* **Kullanıcı Adı**: `admin`
-* **Şifre**: `admin123`
 
 Giriş yaptıktan sonra sol menüyü kullanarak tüm içerikleri ekleyebilir, düzenleyebilir, silebilir ve **Site Ayarları** bölümünden kulüp adı, logo, iletişim kanalları ile tema renklerini dizebilirsiniz.
 
