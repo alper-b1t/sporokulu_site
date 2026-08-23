@@ -20,7 +20,7 @@ export default function HeroSlider({ slides }) {
     return (
       <div className="slider-fallback">
         <div className="container">
-          <h2>Galatasaray Spor Kulübü</h2>
+          <h2>Galata Spor Kulübü</h2>
           <p>Yenilmez Armada, Şampiyonlar Ligi Sezonuna Hazırlanıyor.</p>
         </div>
         <style jsx>{`

@@ -15,18 +15,18 @@ export async function generateMetadata() {
 
     return {
       title: {
-        default: settings.club_name || 'Galatasaray Spor Kulübü',
-        template: `%s | ${settings.club_name || 'Galatasaray Spor Kulübü'}`
+        default: settings.club_name || 'Galata Spor Kulübü',
+        template: `%s | ${settings.club_name || 'Galata Spor Kulübü'}`
       },
-      description: 'Galatasaray Spor Kulübü Resmi Web Sitesi. Güncel haberler, fikstür, duyurular, branşlar ve yönetim kurulu kadromuz.',
+      description: 'Galata Spor Kulübü Resmi Web Sitesi. Güncel haberler, fikstür, duyurular, branşlar ve yönetim kurulu kadromuz.',
       icons: {
         icon: settings.logo_url || '/favicon.ico',
       }
     };
   } catch (error) {
     return {
-      title: 'Galatasaray Spor Kulübü',
-      description: 'Galatasaray Spor Kulübü Web Sitesi'
+      title: 'Galata Spor Kulübü',
+      description: 'Galata Spor Kulübü Web Sitesi'
     };
   }
 }

@@ -47,7 +47,7 @@ export default function Footer() {
             {settings?.logo_url ? (
               <img src={settings.logo_url} alt={settings.club_name || 'Logo'} className="footer-logo" />
             ) : (
-              <span className="footer-logo-text">{settings?.club_name || 'GALATASARAY'}</span>
+              <span className="footer-logo-text">{settings?.club_name || 'GALATA'}</span>
             )}
           </Link>
           <p className="footer-desc">
@@ -131,7 +131,7 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div className="footer-bottom">
         <div className="container bottom-container">
-          <p>© {currentYear} {settings?.club_name || 'Galatasaray Spor Kulübü'}. Tüm hakları saklıdır.</p>
+          <p>© {currentYear} {settings?.club_name || 'Galata Spor Kulübü'}. Tüm hakları saklıdır.</p>
         </div>
       </div>
 

@@ -136,7 +136,7 @@ class Database {
 
     // Seed Settings
     const settings = [
-      ['club_name', 'Galatasaray Spor Kulübü'],
+      ['club_name', 'Galata Spor Kulübü'],
       ['logo_url', '/uploads/whatsapp-image-2026-08-20-at-17-39-45-1787481900147.jpeg'],
       ['phone', '+90 212 305 1905'],
       ['email', 'info@galatasporkulubu.org.tr'],
@@ -178,7 +178,7 @@ class Database {
       [
         'Genç Yetenekler Akademimizde Yetişiyor',
         'genc-yetenekler-akademimizde-yetisiyor',
-        'Galatasaray Altyapı Akademisi, her yıl olduğu gibi bu yıl da Türk sporuna yeni yıldızlar kazandırmaya devam ediyor. U-17 ve U-19 takımlarımızın kazandığı şampiyonlukların ardından altyapı koordinatörümüz, modern tesislerimizde dünya standartlarında eğitim uygulandığını belirtti. Genç sporcuların sadece sportif başarıya değil, aynı zamanda ahlaki ve zihinsel gelişime de odaklandığı akademimiz, A takım seviyesine bu yıl en az 4 genç oyuncu kazandırmayı hedefliyor.',
+        'Galata Altyapı Akademisi, her yıl olduğu gibi bu yıl da Türk sporuna yeni yıldızlar kazandırmaya devam ediyor. U-17 ve U-19 takımlarımızın kazandığı şampiyonlukların ardından altyapı koordinatörümüz, modern tesislerimizde dünya standartlarında eğitim uygulandığını belirtti. Genç sporcuların sadece sportif başarıya değil, aynı zamanda ahlaki ve zihinsel gelişime de odaklandığı akademimiz, A takım seviyesine bu yıl en az 4 genç oyuncu kazandırmayı hedefliyor.',
         'Futbol akademimiz, modern altyapı tesisleri ve bilimsel antrenman metodlarıyla geleceğin aslanlarını hazırlıyor.',
         '/uploads/whatsapp-image-2026-08-20-at-17-39-45-1787482663350.jpeg',
         '2026-08-18'
@@ -217,10 +217,10 @@ class Database {
 
     // Seed Fixtures
     const fixtures = [
-      ['Galatasaray', 'Fenerbahçe', '2026-09-12', '19:00', 'Nef Stadyumu', 'Süper Lig', null, null, 'upcoming'],
-      ['Beşiktaş', 'Galatasaray', '2026-09-20', '20:00', 'Tüpraş Stadyumu', 'Süper Lig', null, null, 'upcoming'],
-      ['Galatasaray', 'Trabzonspor', '2026-08-15', '21:45', 'Nef Stadyumu', 'Süper Lig', 2, 1, 'played'],
-      ['Konyaspor', 'Galatasaray', '2026-08-09', '19:15', 'Konya Büyükşehir Stadyumu', 'Süper Lig', 0, 3, 'played']
+      ['Galata', 'Fenerbahçe', '2026-09-12', '19:00', 'Nef Stadyumu', 'Süper Lig', null, null, 'upcoming'],
+      ['Beşiktaş', 'Galata', '2026-09-20', '20:00', 'Tüpraş Stadyumu', 'Süper Lig', null, null, 'upcoming'],
+      ['Galata', 'Trabzonspor', '2026-08-15', '21:45', 'Nef Stadyumu', 'Süper Lig', 2, 1, 'played'],
+      ['Konyaspor', 'Galata', '2026-08-09', '19:15', 'Konya Büyükşehir Stadyumu', 'Süper Lig', 0, 3, 'played']
     ];
 
     const stmtFix = this.db.prepare(`INSERT OR IGNORE INTO fixtures (home_team, away_team, date, time, stadium, league, home_score, away_score, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`);

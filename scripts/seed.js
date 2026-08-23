@@ -120,7 +120,7 @@ db.serialize(async () => {
 
   // Default Site Settings
   const settings = [
-    ['club_name', 'Galatasaray Spor Kulübü'],
+    ['club_name', 'Galata Spor Kulübü'],
     ['logo_url', '/uploads/gs_logo.png'],
     ['phone', '+90 212 305 1905'],
     ['email', 'info@galatasporkulubu.org.tr'],
@@ -201,10 +201,10 @@ db.serialize(async () => {
 
   // Fixtures Seed
   const fixtures = [
-    ['Galatasaray', 'Fenerbahçe', '2026-09-12', '19:00', 'Nef Stadyumu', 'Süper Lig', null, null, 'upcoming'],
-    ['Beşiktaş', 'Galatasaray', '2026-09-20', '20:00', 'Tüpraş Stadyumu', 'Süper Lig', null, null, 'upcoming'],
-    ['Galatasaray', 'Trabzonspor', '2026-08-15', '21:45', 'Nef Stadyumu', 'Süper Lig', 2, 1, 'played'],
-    ['Konyaspor', 'Galatasaray', '2026-08-09', '19:15', 'Konya Büyükşehir Stadyumu', 'Süper Lig', 0, 3, 'played']
+    ['Galata', 'Fenerbahçe', '2026-09-12', '19:00', 'Nef Stadyumu', 'Süper Lig', null, null, 'upcoming'],
+    ['Beşiktaş', 'Galata', '2026-09-20', '20:00', 'Tüpraş Stadyumu', 'Süper Lig', null, null, 'upcoming'],
+    ['Galata', 'Trabzonspor', '2026-08-15', '21:45', 'Nef Stadyumu', 'Süper Lig', 2, 1, 'played'],
+    ['Konyaspor', 'Galata', '2026-08-09', '19:15', 'Konya Büyükşehir Stadyumu', 'Süper Lig', 0, 3, 'played']
   ];
 
   const stmtFix = db.prepare(`INSERT OR IGNORE INTO fixtures (home_team, away_team, date, time, stadium, league, home_score, away_score, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`);

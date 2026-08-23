@@ -70,7 +70,7 @@ export default function Header() {
               </span>
             </div>
           ) : (
-            <span className="logo-text">{settings?.club_name || 'GALATASARAY'}</span>
+            <span className="logo-text">{settings?.club_name || 'GALATA'}</span>
           )}
         </Link>
 
