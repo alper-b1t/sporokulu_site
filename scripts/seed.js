@@ -125,7 +125,7 @@ db.serialize(async () => {
     ['phone', '+90 212 305 1905'],
     ['email', 'info@galatasporkulubu.org.tr'],
     ['whatsapp', '905051905190'],
-    ['address', 'Nef Stadyumu, Huzur Mh., Seyrantepe, Sarıyer, İstanbul'],
+    ['address', 'Battalgazi, Malatya'],
     ['instagram', 'https://instagram.com/galatasaray'],
     ['facebook', 'https://facebook.com/galatasaray'],
     ['twitter', 'https://twitter.com/galatasaray'],
