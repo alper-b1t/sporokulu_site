@@ -1818,9 +1818,6 @@ export default function AdminPage() {
         }
         .color-picker-wrapper {
           display: flex;
-          gap: 12px;
-          align-items: center;
-        }
         .color-picker-wrapper input[type="color"] {
           width: 44px;
           height: 44px;
@@ -1854,19 +1851,195 @@ export default function AdminPage() {
             border-right: none;
             border-bottom: 1px solid rgba(255,255,255,0.05);
           }
+          .sidebar-brand {
+            padding: 16px 20px;
+          }
           .sidebar-nav {
             flex-direction: row;
             overflow-x: auto;
-            padding: 10px;
+            padding: 12px;
             gap: 8px;
+            scrollbar-width: none;
+          }
+          .sidebar-nav::-webkit-scrollbar {
+            display: none;
           }
           .sidebar-link {
-            padding: 8px 12px;
+            padding: 10px 16px;
             font-size: 13px;
             white-space: nowrap;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.03);
           }
           .sidebar-logout-btn {
             margin-top: 0;
+            background: rgba(239, 68, 68, 0.1) !important;
+          }
+          .admin-content {
+            padding: 20px;
+          }
+        }
+        @media (max-width: 767px) {
+          .admin-content {
+            padding: 16px;
+          }
+          .admin-header {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 12px;
+            margin-bottom: 20px;
+          }
+          .admin-header .btn {
+            width: 100%;
+            padding: 12px;
+          }
+          .admin-title {
+            font-size: 20px;
+            text-align: center;
+          }
+          .dashboard-stats-grid {
+            grid-template-columns: 1fr;
+            gap: 12px;
+          }
+          .stat-box {
+            padding: 16px;
+          }
+          .stat-info span {
+            font-size: 22px;
+          }
+
+          /* Turn tables into cards on mobile */
+          .admin-table-container {
+            background: none;
+            border: none;
+            overflow: visible;
+            margin-top: 10px;
+          }
+          .admin-table, 
+          .admin-table thead, 
+          .admin-table tbody, 
+          .admin-table th, 
+          .admin-table td, 
+          .admin-table tr { 
+            display: block; 
+          }
+          .admin-table thead tr { 
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+          }
+          .admin-table tr { 
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+          }
+          .admin-table td { 
+            border: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04); 
+            position: relative;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: right;
+            font-size: 14px;
+          }
+          .admin-table td:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-top: 6px;
+            justify-content: flex-end;
+          }
+          .admin-table td img {
+            width: 44px !important;
+            height: 44px !important;
+            border-radius: 6px !important;
+          }
+          .admin-table td:before { 
+            float: left;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+          }
+
+          /* Dynamic Nth-child labels */
+          .news-management-view .admin-table td:nth-of-type(1):before { content: "Görsel"; }
+          .news-management-view .admin-table td:nth-of-type(2):before { content: "Başlık"; }
+          .news-management-view .admin-table td:nth-of-type(3):before { content: "Yayın Tarihi"; }
+          .news-management-view .admin-table td:nth-of-type(4):before { content: "Durum"; }
+          .news-management-view .admin-table td:nth-of-type(5):before { content: "İşlemler"; }
+          
+          .announcements-management-view .admin-table td:nth-of-type(1):before { content: "Başlık"; }
+          .announcements-management-view .admin-table td:nth-of-type(2):before { content: "Yayın Tarihi"; }
+          .announcements-management-view .admin-table td:nth-of-type(3):before { content: "Önem Derecesi"; }
+          .announcements-management-view .admin-table td:nth-of-type(4):before { content: "Durum"; }
+          .announcements-management-view .admin-table td:nth-of-type(5):before { content: "İşlemler"; }
+          
+          .fixtures-management-view .admin-table td:nth-of-type(1):before { content: "Lig/Kupa"; }
+          .fixtures-management-view .admin-table td:nth-of-type(2):before { content: "Karşılaşma"; }
+          .fixtures-management-view .admin-table td:nth-of-type(3):before { content: "Tarih & Saat"; }
+          .fixtures-management-view .admin-table td:nth-of-type(4):before { content: "Stadyum"; }
+          .fixtures-management-view .admin-table td:nth-of-type(5):before { content: "Skor / Durum"; }
+          .fixtures-management-view .admin-table td:nth-of-type(6):before { content: "İşlemler"; }
+          
+          .sports-management-view .admin-table td:nth-of-type(1):before { content: "Görsel"; }
+          .sports-management-view .admin-table td:nth-of-type(2):before { content: "Branş Adı"; }
+          .sports-management-view .admin-table td:nth-of-type(3):before { content: "Açıklama"; }
+          .sports-management-view .admin-table td:nth-of-type(4):before { content: "Sıra"; }
+          .sports-management-view .admin-table td:nth-of-type(5):before { content: "İşlemler"; }
+          
+          .staff-management-view .admin-table td:nth-of-type(1):before { content: "Fotoğraf"; }
+          .staff-management-view .admin-table td:nth-of-type(2):before { content: "Ad Soyad"; }
+          .staff-management-view .admin-table td:nth-of-type(3):before { content: "Görevi"; }
+          .staff-management-view .admin-table td:nth-of-type(4):before { content: "Sıra"; }
+          .staff-management-view .admin-table td:nth-of-type(5):before { content: "Durum"; }
+          .staff-management-view .admin-table td:nth-of-type(6):before { content: "İşlemler"; }
+          
+          .mgmt-management-view .admin-table td:nth-of-type(1):before { content: "Fotoğraf"; }
+          .mgmt-management-view .admin-table td:nth-of-type(2):before { content: "Ad Soyad"; }
+          .mgmt-management-view .admin-table td:nth-of-type(3):before { content: "Görev / Unvan"; }
+          .mgmt-management-view .admin-table td:nth-of-type(4):before { content: "Sıra"; }
+          .mgmt-management-view .admin-table td:nth-of-type(5):before { content: "İşlemler"; }
+
+          /* Modal Responsive Overlay (Full Screen Bottom Sheet) */
+          :global(.modal-content) {
+            width: 100% !important;
+            height: 100% !important;
+            max-height: 100vh !important;
+            border-radius: 0 !important;
+            border: none !important;
+          }
+          :global(.modal-body) {
+            overflow-y: auto !important;
+            flex-grow: 1 !important;
+            padding: 16px !important;
+          }
+          :global(.modal-header) {
+            padding: 16px !important;
+          }
+          :global(.modal-footer) {
+            padding: 16px !important;
+            position: sticky;
+            bottom: 0;
+            background: #18181b;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            z-index: 10;
+          }
+          :global(.grid-2) {
+            grid-template-columns: 1fr !important;
+            gap: 12px !important;
+          }
+          
+          .settings-form {
+            padding: 16px;
+          }
+          .settings-grid {
+            gap: 20px;
           }
         }
       `}</style>
