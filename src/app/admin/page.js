@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { 
   LayoutDashboard, Newspaper, Bell, Calendar, Image as ImageIcon, 
   Settings, LogOut, Plus, Edit, Trash2, Upload, X, ShieldAlert,
-  Users, UserCheck, Trophy, Save, ArrowRight
+  Users, UserCheck, Trophy, Save, ArrowRight, MoreVertical
 } from 'lucide-react';
 
 export default function AdminPage() {
@@ -39,6 +39,7 @@ export default function AdminPage() {
   const [modalType, setModalType] = useState(''); // 'news', 'announcements', 'fixtures', 'gallery', 'sports', 'staff', 'management'
   const [modalMode, setModalMode] = useState('add'); // 'add', 'edit'
   const [currentItem, setCurrentItem] = useState(null); // Item being edited
+  const [actionSheet, setActionSheet] = useState(null);
 
   // Reusable Image Uploading states
   const [uploading, setUploading] = useState(false);
@@ -571,9 +572,14 @@ export default function AdminPage() {
                             </span>
                           </td>
                           <td>
-                            <div className="admin-actions">
+                            <div className="admin-actions desktop-only">
                               <button className="admin-action-btn admin-action-edit" onClick={() => openModal('news', 'edit', item)}>Düzenle</button>
                               <button className="admin-action-btn admin-action-delete" onClick={() => handleDelete(item.id, 'news')}>Sil</button>
+                            </div>
+                            <div className="admin-actions-mobile mobile-only">
+                              <button type="button" className="three-dots-btn" onClick={() => setActionSheet({ title: item.title, item, type: 'news' })}>
+                                <MoreVertical size={18} />
+                              </button>
                             </div>
                           </td>
                         </tr>
@@ -622,9 +628,14 @@ export default function AdminPage() {
                             </span>
                           </td>
                           <td>
-                            <div className="admin-actions">
+                            <div className="admin-actions desktop-only">
                               <button className="admin-action-btn admin-action-edit" onClick={() => openModal('announcements', 'edit', item)}>Düzenle</button>
                               <button className="admin-action-btn admin-action-delete" onClick={() => handleDelete(item.id, 'announcements')}>Sil</button>
+                            </div>
+                            <div className="admin-actions-mobile mobile-only">
+                              <button type="button" className="three-dots-btn" onClick={() => setActionSheet({ title: item.title, item, type: 'announcements' })}>
+                                <MoreVertical size={18} />
+                              </button>
                             </div>
                           </td>
                         </tr>
@@ -675,9 +686,14 @@ export default function AdminPage() {
                               )}
                             </td>
                             <td>
-                              <div className="admin-actions">
+                              <div className="admin-actions desktop-only">
                                 <button className="admin-action-btn admin-action-edit" onClick={() => openModal('fixtures', 'edit', item)}>Düzenle/Skor</button>
                                 <button className="admin-action-btn admin-action-delete" onClick={() => handleDelete(item.id, 'fixtures')}>Sil</button>
+                              </div>
+                              <div className="admin-actions-mobile mobile-only">
+                                <button type="button" className="three-dots-btn" onClick={() => setActionSheet({ title: `${item.home_team} vs ${item.away_team}`, item, type: 'fixtures' })}>
+                                  <MoreVertical size={18} />
+                                </button>
                               </div>
                             </td>
                           </tr>
@@ -752,9 +768,14 @@ export default function AdminPage() {
                           <td style={{ maxWidth: '300px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.description}</td>
                           <td>{item.display_order}</td>
                           <td>
-                            <div className="admin-actions">
+                            <div className="admin-actions desktop-only">
                               <button className="admin-action-btn admin-action-edit" onClick={() => openModal('sports', 'edit', item)}>Düzenle</button>
                               <button className="admin-action-btn admin-action-delete" onClick={() => handleDelete(item.id, 'sports')}>Sil</button>
+                            </div>
+                            <div className="admin-actions-mobile mobile-only">
+                              <button type="button" className="three-dots-btn" onClick={() => setActionSheet({ title: item.name, item, type: 'sports' })}>
+                                <MoreVertical size={18} />
+                              </button>
                             </div>
                           </td>
                         </tr>
@@ -803,9 +824,14 @@ export default function AdminPage() {
                             </span>
                           </td>
                           <td>
-                            <div className="admin-actions">
+                            <div className="admin-actions desktop-only">
                               <button className="admin-action-btn admin-action-edit" onClick={() => openModal('staff', 'edit', item)}>Düzenle</button>
                               <button className="admin-action-btn admin-action-delete" onClick={() => handleDelete(item.id, 'staff')}>Sil</button>
+                            </div>
+                            <div className="admin-actions-mobile mobile-only">
+                              <button type="button" className="three-dots-btn" onClick={() => setActionSheet({ title: item.name, item, type: 'staff' })}>
+                                <MoreVertical size={18} />
+                              </button>
                             </div>
                           </td>
                         </tr>
@@ -848,9 +874,14 @@ export default function AdminPage() {
                           <td>{item.role}</td>
                           <td>{item.display_order}</td>
                           <td>
-                            <div className="admin-actions">
+                            <div className="admin-actions desktop-only">
                               <button className="admin-action-btn admin-action-edit" onClick={() => openModal('management', 'edit', item)}>Düzenle</button>
                               <button className="admin-action-btn admin-action-delete" onClick={() => handleDelete(item.id, 'management')}>Sil</button>
+                            </div>
+                            <div className="admin-actions-mobile mobile-only">
+                              <button type="button" className="three-dots-btn" onClick={() => setActionSheet({ title: item.name, item, type: 'management' })}>
+                                <MoreVertical size={18} />
+                              </button>
                             </div>
                           </td>
                         </tr>
@@ -1581,6 +1612,45 @@ export default function AdminPage() {
         </div>
       )}
 
+      {/* MOBILE ACTION SHEET */}
+      {actionSheet && (
+        <div className="action-sheet-overlay" onClick={() => setActionSheet(null)}>
+          <div className="action-sheet-content" onClick={(e) => e.stopPropagation()}>
+            <div className="action-sheet-header">
+              <h3>{actionSheet.title}</h3>
+              <p>Gerçekleştirmek istediğiniz işlemi seçin.</p>
+            </div>
+            <div className="action-sheet-body">
+              <button 
+                type="button"
+                className="action-sheet-btn action-sheet-edit"
+                onClick={() => {
+                  openModal(actionSheet.type, 'edit', actionSheet.item);
+                  setActionSheet(null);
+                }}
+              >
+                <Edit size={18} />
+                <span>Düzenle</span>
+              </button>
+              <button 
+                type="button"
+                className="action-sheet-btn action-sheet-delete"
+                onClick={() => {
+                  handleDelete(actionSheet.item.id, actionSheet.type);
+                  setActionSheet(null);
+                }}
+              >
+                <Trash2 size={18} />
+                <span>Sil</span>
+              </button>
+              <button type="button" className="action-sheet-btn action-sheet-cancel" onClick={() => setActionSheet(null)}>
+                İptal
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <style jsx>{`
         .admin-loading {
           width: 100vw;
@@ -1818,6 +1888,9 @@ export default function AdminPage() {
         }
         .color-picker-wrapper {
           display: flex;
+          gap: 12px;
+          align-items: center;
+        }
         .color-picker-wrapper input[type="color"] {
           width: 44px;
           height: 44px;
@@ -1829,6 +1902,128 @@ export default function AdminPage() {
         }
         .settings-submit-btn {
           padding: 14px 30px;
+        }
+
+        /* Three dots and desktop/mobile visibility helpers */
+        .desktop-only {
+          display: flex !important;
+        }
+        .mobile-only {
+          display: none !important;
+        }
+        .three-dots-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          background: rgba(255,255,255,0.03);
+          border: 1px solid rgba(255,255,255,0.08);
+          color: rgba(255,255,255,0.7);
+          cursor: pointer;
+          transition: var(--transition-fast);
+        }
+        .three-dots-btn:hover {
+          background: rgba(255,255,255,0.1);
+          color: white;
+          border-color: var(--secondary-color);
+        }
+
+        /* Mobile Action Sheet (Bottom Sheet overlay) */
+        .action-sheet-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background: rgba(0,0,0,0.6);
+          z-index: 10000;
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
+          backdrop-filter: blur(4px);
+        }
+        .action-sheet-content {
+          width: 100%;
+          max-width: 480px;
+          background: #141416;
+          border-top: 1px solid rgba(255,255,255,0.1);
+          border-radius: 16px 16px 0 0;
+          padding: 24px 20px 30px 20px;
+          animation: slideUp 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+          box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
+        }
+        .action-sheet-header {
+          text-align: center;
+          margin-bottom: 20px;
+          border-bottom: 1px solid rgba(255,255,255,0.05);
+          padding-bottom: 12px;
+        }
+        .action-sheet-header h3 {
+          font-size: 16px;
+          font-weight: 700;
+          color: white;
+          margin-bottom: 4px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .action-sheet-header p {
+          font-size: 12px;
+          color: rgba(255,255,255,0.4);
+        }
+        .action-sheet-body {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+        .action-sheet-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          width: 100%;
+          padding: 14px;
+          font-size: 15px;
+          font-weight: 600;
+          border-radius: 10px;
+          cursor: pointer;
+          transition: var(--transition-fast);
+        }
+        .action-sheet-edit {
+          background: rgba(245, 158, 11, 0.1);
+          color: #fbbf24;
+          border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+        .action-sheet-edit:hover {
+          background: rgba(245, 158, 11, 0.2);
+        }
+        .action-sheet-delete {
+          background: rgba(239, 68, 68, 0.1);
+          color: #f87171;
+          border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+        .action-sheet-delete:hover {
+          background: rgba(239, 68, 68, 0.2);
+        }
+        .action-sheet-cancel {
+          background: rgba(255,255,255,0.05);
+          color: white;
+          border: 1px solid rgba(255,255,255,0.08);
+          margin-top: 4px;
+        }
+        .action-sheet-cancel:hover {
+          background: rgba(255,255,255,0.1);
+        }
+
+        @keyframes slideUp {
+          from {
+            transform: translateY(100%);
+          }
+          to {
+            transform: translateY(0);
+          }
         }
 
         @media (max-width: 1199px) {
@@ -1880,6 +2075,13 @@ export default function AdminPage() {
           }
         }
         @media (max-width: 767px) {
+          .desktop-only {
+            display: none !important;
+          }
+          .mobile-only {
+            display: flex !important;
+          }
+          
           .admin-content {
             padding: 16px;
           }
@@ -1908,103 +2110,21 @@ export default function AdminPage() {
             font-size: 22px;
           }
 
-          /* Turn tables into cards on mobile */
+          /* Keep original table look on mobile but allow scrolling */
           .admin-table-container {
-            background: none;
-            border: none;
-            overflow: visible;
-            margin-top: 10px;
+            overflow-x: auto !important;
+            scrollbar-width: thin;
+            background: var(--accent-color);
+            border: 1px solid var(--card-border);
+            border-radius: var(--border-radius);
+            margin-top: 15px;
           }
-          .admin-table, 
-          .admin-table thead, 
-          .admin-table tbody, 
-          .admin-table th, 
-          .admin-table td, 
-          .admin-table tr { 
-            display: block; 
-          }
-          .admin-table thead tr { 
-            position: absolute;
-            top: -9999px;
-            left: -9999px;
-          }
-          .admin-table tr { 
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 16px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-          }
-          .admin-table td { 
-            border: none;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04); 
-            position: relative;
-            padding: 10px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            text-align: right;
-            font-size: 14px;
-          }
-          .admin-table td:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-            margin-top: 6px;
-            justify-content: flex-end;
-          }
-          .admin-table td img {
-            width: 44px !important;
-            height: 44px !important;
-            border-radius: 6px !important;
-          }
-          .admin-table td:before { 
-            float: left;
-            font-weight: 700;
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-          }
-
-          /* Dynamic Nth-child labels */
-          .news-management-view .admin-table td:nth-of-type(1):before { content: "Görsel"; }
-          .news-management-view .admin-table td:nth-of-type(2):before { content: "Başlık"; }
-          .news-management-view .admin-table td:nth-of-type(3):before { content: "Yayın Tarihi"; }
-          .news-management-view .admin-table td:nth-of-type(4):before { content: "Durum"; }
-          .news-management-view .admin-table td:nth-of-type(5):before { content: "İşlemler"; }
           
-          .announcements-management-view .admin-table td:nth-of-type(1):before { content: "Başlık"; }
-          .announcements-management-view .admin-table td:nth-of-type(2):before { content: "Yayın Tarihi"; }
-          .announcements-management-view .admin-table td:nth-of-type(3):before { content: "Önem Derecesi"; }
-          .announcements-management-view .admin-table td:nth-of-type(4):before { content: "Durum"; }
-          .announcements-management-view .admin-table td:nth-of-type(5):before { content: "İşlemler"; }
-          
-          .fixtures-management-view .admin-table td:nth-of-type(1):before { content: "Lig/Kupa"; }
-          .fixtures-management-view .admin-table td:nth-of-type(2):before { content: "Karşılaşma"; }
-          .fixtures-management-view .admin-table td:nth-of-type(3):before { content: "Tarih & Saat"; }
-          .fixtures-management-view .admin-table td:nth-of-type(4):before { content: "Stadyum"; }
-          .fixtures-management-view .admin-table td:nth-of-type(5):before { content: "Skor / Durum"; }
-          .fixtures-management-view .admin-table td:nth-of-type(6):before { content: "İşlemler"; }
-          
-          .sports-management-view .admin-table td:nth-of-type(1):before { content: "Görsel"; }
-          .sports-management-view .admin-table td:nth-of-type(2):before { content: "Branş Adı"; }
-          .sports-management-view .admin-table td:nth-of-type(3):before { content: "Açıklama"; }
-          .sports-management-view .admin-table td:nth-of-type(4):before { content: "Sıra"; }
-          .sports-management-view .admin-table td:nth-of-type(5):before { content: "İşlemler"; }
-          
-          .staff-management-view .admin-table td:nth-of-type(1):before { content: "Fotoğraf"; }
-          .staff-management-view .admin-table td:nth-of-type(2):before { content: "Ad Soyad"; }
-          .staff-management-view .admin-table td:nth-of-type(3):before { content: "Görevi"; }
-          .staff-management-view .admin-table td:nth-of-type(4):before { content: "Sıra"; }
-          .staff-management-view .admin-table td:nth-of-type(5):before { content: "Durum"; }
-          .staff-management-view .admin-table td:nth-of-type(6):before { content: "İşlemler"; }
-          
-          .mgmt-management-view .admin-table td:nth-of-type(1):before { content: "Fotoğraf"; }
-          .mgmt-management-view .admin-table td:nth-of-type(2):before { content: "Ad Soyad"; }
-          .mgmt-management-view .admin-table td:nth-of-type(3):before { content: "Görev / Unvan"; }
-          .mgmt-management-view .admin-table td:nth-of-type(4):before { content: "Sıra"; }
-          .mgmt-management-view .admin-table td:nth-of-type(5):before { content: "İşlemler"; }
+          /* Prevent overflow-wrap from breaking layout */
+          .admin-table th, .admin-table td {
+            white-space: nowrap;
+            padding: 12px 14px !important;
+          }
 
           /* Modal Responsive Overlay (Full Screen Bottom Sheet) */
           :global(.modal-content) {
