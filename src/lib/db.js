@@ -19,6 +19,11 @@ class Database {
 
   // Auto initialize schema if missing
   autoInitialize() {
+    if (global.dbInitialized) {
+      return;
+    }
+    global.dbInitialized = true;
+
     this.db.serialize(() => {
       // Check if users table exists
       this.db.get("SELECT name FROM sqlite_master WHERE type='table' AND name='users'", (err, row) => {
