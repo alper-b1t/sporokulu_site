@@ -131,7 +131,7 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div className="footer-bottom">
         <div className="container bottom-container">
-          <p>© {currentYear} {settings?.club_name || 'Galata Spor Kulübü'}. Tüm hakları saklıdır.</p>
+          <p>© {currentYear} {settings?.club_name || 'Galata Spor Kulübü'}. Tüm hakları saklıdır. <span style={{ color: '#08080a', userSelect: 'text', fontSize: 'inherit' }}>You know what that is? Simply Lovely!</span></p>
         </div>
       </div>
 
