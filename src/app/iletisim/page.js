@@ -37,7 +37,7 @@ export default function Contact() {
       setErrorMsg('Lütfen zorunlu alanları (* işaretli) doldurunuz.');
       return;
     }
-    
+
     setIsSubmitting(true);
     setErrorMsg('');
 
@@ -49,9 +49,9 @@ export default function Contact() {
     }, 1500);
   };
 
-  const waUrl = settings?.whatsapp 
-    ? `https://wa.me/${settings.whatsapp.replace(/\D/g, '')}` 
-    : 'https://wa.me/905051905190';
+  const waUrl = settings?.whatsapp
+    ? `https://wa.me/${settings.whatsapp.replace(/\D/g, '')}`
+    : 'https://wa.me/90530816431';
 
   const secondaryColor = settings?.secondary_color || '#FDB912';
 
@@ -64,7 +64,7 @@ export default function Contact() {
         </p>
 
         <div className="grid-2 contact-layout-grid">
-          
+
           {/* Left Column: Contact details */}
           <div className="contact-info-col">
             <h2 className="info-title">İrtibat Bilgilerimiz</h2>
@@ -135,7 +135,7 @@ export default function Contact() {
               ) : (
                 <form onSubmit={handleSubmit} className="contact-form">
                   <h3 className="form-panel-title">Bizlere Yazın</h3>
-                  
+
                   {errorMsg && <div className="error-alert">{errorMsg}</div>}
 
                   <div className="form-group">
